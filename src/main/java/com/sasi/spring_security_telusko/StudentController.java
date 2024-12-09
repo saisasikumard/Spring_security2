@@ -17,10 +17,11 @@ public class StudentController {
     public List<Student> students(){
         return students;
     }
-    //get csrf token request
+    //get csrf token request to perform POST ,PUT,DELETE
     @GetMapping("/csrf")
     public CsrfToken csrfToken(HttpServletRequest request){
         return (CsrfToken) request.getAttribute("_csrf");
+
     }
 
     @PostMapping("/students")
