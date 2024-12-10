@@ -1,6 +1,5 @@
-package com.sasi.spring_security_telusko;
+package com.sasi.spring_security_telusko.controller;
 
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

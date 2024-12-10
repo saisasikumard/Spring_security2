@@ -1,4 +1,4 @@
-package com.sasi.spring_security_telusko;
+package com.sasi.spring_security_telusko.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
