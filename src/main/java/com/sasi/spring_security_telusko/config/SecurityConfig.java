@@ -1,5 +1,6 @@
 package com.sasi.spring_security_telusko.config;
 
+import com.sasi.spring_security_telusko.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,33 +23,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
     @Autowired
-    UserDetailsService userDetailsService;
+    MyUserDetailsService userDetailsService;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        //this below code we can write shortly as below....
-   /*
-        http.csrf(customizer->customizer.disable()); //to disable csrf validation for POST,PUT,DELETE
-        http.authorizeHttpRequests(request-> request.anyRequest().authenticated()); //to authorize request
-        http.httpBasic(Customizer.withDefaults()); //for security for basic validation
-       // http.formLogin(Customizer.withDefaults());  //for web form loginn
-        //to make stateless session(not transfer details from to another session)
-        http.sessionManagement(session
-                ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        return http.build();
-
-    */
-        //csrf disable code without lamdba expression.
-      /*  Customizer<CsrfConfigurer<HttpSecurity>> custCsrf=new Customizer<CsrfConfigurer<HttpSecurity>>() {
-            @Override
-            public void customize(CsrfConfigurer<HttpSecurity> customizer) {
-                customizer.disable();
-            }
-        };
-        */
        return http.csrf(customizer-> customizer.disable())
                 .authorizeHttpRequests(request->request.anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
+               .authenticationProvider(authenticatorProvider())
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }

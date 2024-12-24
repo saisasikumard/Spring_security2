@@ -7,6 +7,17 @@ import jakarta.persistence.Id;
 public class Users {
     @Id
     private int id;
+    private String username;
+    private String password;
+    private String roles;
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String toString() {
@@ -17,7 +28,7 @@ public class Users {
                 '}';
     }
 
-    private String username;
+
 
     public int getId() {
         return id;
@@ -43,7 +54,7 @@ public class Users {
         this.password = password;
     }
 
-    private String password;
+
 
 
 }
